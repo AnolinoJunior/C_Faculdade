@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 int main() {
     // Dados das cartas
     int carta1 = 1, carta2 = 2;
@@ -14,44 +13,54 @@ int main() {
     float superpoder1 = populacao1 + area1 + pib1 + turistico1 + percapita1 + area1/populacao1;
     float superpoder2 = populacao2 + area2 + pib2 + turistico2 + percapita2 + area2/populacao2;
 
-    // Cabeçalho
-    printf("Comparação de Cartas:\n\n");
-    
-    // População (maior vence)
-    printf("População: Carta %d venceu (%d)\n", 
-           (populacao1 > populacao2) ? carta1 : carta2, 
-           (populacao1 > populacao2));
-    
-    // Área (maior vence)
-    printf("Área: Carta %d venceu (%d)\n", 
-           (area1 > area2) ? carta1 : carta2, 
-           (area1 > area2));
-    
-    // PIB (maior vence)
-    printf("PIB: Carta %d venceu (%d)\n", 
-           (pib1 > pib2) ? carta1 : carta2, 
-           (pib1 > pib2));
-    
-    // Pontos Turísticos (maior vence)
-    printf("Pontos Turísticos: Carta %d venceu (%d)\n", 
-           (turistico1 > turistico2) ? carta1 : carta2, 
-           (turistico1 > turistico2));
-    
-    // Densidade Populacional (MENOR vence)
-    printf("Densidade Populacional: Carta %d venceu (%d)\n", 
-           (densidade1 < densidade2) ? carta1 : carta2, 
-           (densidade1 < densidade2));
-    
-    // PIB per capita (maior vence)
-    printf("PIB per Capita: Carta %d venceu (%d)\n", 
-           (percapita1 > percapita2) ? carta1 : carta2, 
-           (percapita1 > percapita2));
-    
-    // Super Poder (maior vence)
-    printf("Super Poder: Carta %d venceu (%d)\n", 
-           (superpoder1 > superpoder2) ? carta1 : carta2, 
-           (superpoder1 > superpoder2));
+     const char *resultados[] = {"Carta 2 = (0) venceu", "Carta 1 = (1) venceu"};
+
+    // Seleciona o índice (0 ou 1) baseado na comparação
+
+   // Comparação de população
+    int indice_vencedor_pop = (populacao1 > populacao2);
+    printf("A população da carta 1 (%lu) é maior do que a carta 2 (%lu)? : %s\n",
+           populacao1,
+           populacao2,
+           resultados[indice_vencedor_pop]);
+
+    // Comparação de centros turísticos
+    int indice_vencedor_tur = (turistico1 > turistico2);
+    printf("A Carta 1 tem mais centros turisticos (%d) que a carta 2 (%d)? : %s\n",
+           turistico1,
+           turistico2,
+           resultados[indice_vencedor_tur]);
+
+    // Comparação de área por km²
+    int indice_vencedor_area = (area1 > area2);
+    printf(" A área da carta 1 (%.2f) km² é maior que a da carta 2 (%.2f) km²? : %s \n",
+           area1,
+           area2,
+           resultados[indice_vencedor_area]);
+    // Comparação do PIB
+    int indice_vencedor_pib = (pib1 > pib2);
+    printf("O PIB da carta 1 (%.2f) é maior do que a da carta 2 (%.2f)? : %s \n",
+           pib1,
+           pib2,
+           resultados[indice_vencedor_pib]);
+    // Comparação Densidade
+    int indice_vencedor_densidade = (densidade1 < densidade2);
+    printf("A densidade da carta 1 (%.2f) é maior do que a carta 2 (%.2f)? : %s \n",
+            densidade1,
+            densidade2,
+            resultados[indice_vencedor_densidade]);
+
+    // Comparação Per Capita
+    int indice_vencedor_per_capita = (percapita1 > percapita2);
+    printf("O Per capita da carta 1 (%.2f) é maior do que da carta 2 (%.2f)? : %s \n",
+            percapita1,
+            percapita2,
+            resultados[indice_vencedor_per_capita]);   // Comparação de Superpoderes
+    int indice_vencedor_superpoder = (superpoder1 > superpoder2);
+    printf(" O superpoder da carta 1 (%.2f) é maior do que da carta 2 (%.2f)? : %s \n",
+            superpoder1,
+            superpoder2,
+            resultados[indice_vencedor_superpoder]);
 
     return 0;
 }
-
