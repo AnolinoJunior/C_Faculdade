@@ -12,8 +12,6 @@ int main() {
     float densidade1 = (float)populacao1 / area1;
     float densidade2 = (float)populacao2 / area2;
 
-    srand(time(0)); // Inicializa o gerador de números aleatórios
-
     // Mostra as cartas disponíveis
     printf("Super Trunfo - Países\n");
     printf("Carta 1: %s\n População: %lu\n PIB: %.2f\n Área: %d\n Densidade: %.2f\n", 
@@ -26,14 +24,14 @@ int main() {
     printf("\nEscolha sua carta (1 para %s, 2 para %s): ", pais1, pais2);
     scanf("%d", &escolha_jogador);
 
-    // Define qual carta é do jogador e qual é do computador
+    // Define qual carta é do jogador e qual é do jogador 2
     int carta_jogador = escolha_jogador;
-    int carta_computador;
+    int carta_jogador2;
 
     if (escolha_jogador == 1) {
-        carta_computador = 2;
-    } else if (escolha_jogador == 2) {
-        carta_computador = 1;
+        carta_jogador2 = 2;
+    } else {
+        carta_jogador2 = 1;
     }
 
     // Turno do Jogador (escolhe um atributo)
@@ -46,14 +44,14 @@ int main() {
     int atributo_jogador;
     scanf("%d", &atributo_jogador);
 
-    // Turno do Computador (escolhe aleatoriamente)
-    printf("\n--- Turno do Computador ---\n");
-    int atributo_computador = rand() % 4 + 1; // 1 a 4
+    // Turno do Jogador 2 (usa o mesmo atributo do Jogador 1)
+    printf("\n--- Turno do Jogador 2 ---\n");
+    int atributo_jogador2 = atributo_jogador; // Escolhe o mesmo atributo
 
     // Comparação dos atributos
-    float valor_jogador, valor_computador;
+    float valor_jogador, valor_jogador2;
 
-    // Obtém os valores do atributo escolhido pelo jogador
+    // Obtém os valores do atributo escolhido pelo Jogador 1
     if (carta_jogador == 1) {
         switch (atributo_jogador) {
             case 1: valor_jogador = populacao1; break;
@@ -70,43 +68,43 @@ int main() {
         }
     }
 
-    // Obtém os valores do atributo escolhido pelo computador
-    if (carta_computador == 1) {
-        switch (atributo_computador) {
-            case 1: valor_computador = populacao1; break;
-            case 2: valor_computador = pib1; break;
-            case 3: valor_computador = area1; break;
-            case 4: valor_computador = densidade1; break;
+    // Obtém os valores do atributo escolhido pelo Jogador 2 (carta oposta)
+    if (carta_jogador2 == 1) {
+        switch (atributo_jogador2) {
+            case 1: valor_jogador2 = populacao1; break;
+            case 2: valor_jogador2 = pib1; break;
+            case 3: valor_jogador2 = area1; break;
+            case 4: valor_jogador2 = densidade1; break;
         }
     } else {
-        switch (atributo_computador) {
-            case 1: valor_computador = populacao2; break;
-            case 2: valor_computador = pib2; break;
-            case 3: valor_computador = area2; break;
-            case 4: valor_computador = densidade2; break;
+        switch (atributo_jogador2) {
+            case 1: valor_jogador2 = populacao2; break;
+            case 2: valor_jogador2 = pib2; break;
+            case 3: valor_jogador2 = area2; break;
+            case 4: valor_jogador2 = densidade2; break;
         }
     }
 
     // Mostra as escolhas
     printf("\nVocê escolheu o atributo %d (Valor: %.2f)\n", atributo_jogador, valor_jogador);
-    printf("O computador escolheu o atributo %d (Valor: %.2f)\n", atributo_computador, valor_computador);
+    printf("O Jogador 2 escolheu o atributo %d (Valor: %.2f)\n", atributo_jogador2, valor_jogador2);
 
     // Verifica quem venceu
-    if (atributo_jogador == 4 || atributo_computador == 4) {
+    if (atributo_jogador == 4) {
         // Caso especial: Densidade (menor valor vence)
-        if (valor_jogador < valor_computador) {
+        if (valor_jogador < valor_jogador2) {
             printf("\nVocê venceu esta rodada!\n");
-        } else if (valor_jogador > valor_computador) {
-            printf("\nO computador venceu esta rodada!\n");
+        } else if (valor_jogador > valor_jogador2) {
+            printf("\nO Jogador 2 venceu esta rodada!\n");
         } else {
             printf("\nEmpate!\n");
         }
     } else {
         // Para outros atributos, maior valor vence
-        if (valor_jogador > valor_computador) {
+        if (valor_jogador > valor_jogador2) {
             printf("\nVocê venceu esta rodada!\n");
-        } else if (valor_jogador < valor_computador) {
-            printf("\nO computador venceu esta rodada!\n");
+        } else if (valor_jogador < valor_jogador2) {
+            printf("\nO Jogador 2 venceu esta rodada!\n");
         } else {
             printf("\nEmpate!\n");
         }
