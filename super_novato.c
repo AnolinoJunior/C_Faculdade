@@ -39,10 +39,8 @@ int main() {
     
     if (populacao1 > populacao2) {
         printf("  Resultado: Carta 1 (%s) Venceu!\n", cidade1);
-    } else if (populacao2 > populacao1) {
-        printf("  Resultado: Carta 2 (%s) Venceu!\n", cidade2);
     } else {
-        printf("  Resultado: Empate!\n");
+        printf("  Resultado: Carta 2 (%s) Venceu!\n", cidade2);
     }
     printf("\n");
 
@@ -53,24 +51,20 @@ int main() {
     
     if (turistico1 > turistico2) {
         printf("  Resultado: Carta 1 (%s) Venceu!\n", cidade1);
-    } else if (turistico2 > turistico1) {
-        printf("  Resultado: Carta 2 (%s) Venceu!\n", cidade2);
     } else {
-        printf("  Resultado: Empate!\n");
+        printf("  Resultado: Carta 2 (%s) Venceu!\n", cidade2);
     }
     printf("\n");
 
-    // Comparação de densidade demográfica
-    printf("Comparando DENSIDADE DEMOGRÁFICA:\n");
+    // Comparação de densidade demográfica (quanto menor, melhor)
+    printf("Comparando DENSIDADE DEMOGRÁFICA (menor é melhor):\n");
     printf("  %s: %.2f hab/km²\n", cidade1, densidade1);
     printf("  %s: %.2f hab/km²\n", cidade2, densidade2);
     
     if (densidade1 < densidade2) {
         printf("  Resultado: Carta 1 (%s) Venceu!\n", cidade1);
-    } else if (densidade2 < densidade1) {
-        printf("  Resultado: Carta 2 (%s) Venceu!\n", cidade2);
     } else {
-        printf("  Resultado: Empate!\n");
+        printf("  Resultado: Carta 2 (%s) Venceu!\n", cidade2);
     }
     printf("\n");
 
@@ -81,10 +75,8 @@ int main() {
     
     if (percapita1 > percapita2) {
         printf("  Resultado: Carta 1 (%s) Venceu!\n", cidade1);
-    } else if (percapita2 > percapita1) {
-        printf("  Resultado: Carta 2 (%s) Venceu!\n", cidade2);
     } else {
-        printf("  Resultado: Empate!\n");
+        printf("  Resultado: Carta 2 (%s) Venceu!\n", cidade2);
     }
     printf("\n");
 

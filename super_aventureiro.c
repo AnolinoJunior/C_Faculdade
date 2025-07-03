@@ -1,41 +1,116 @@
 #include <stdio.h>
- // Exemplo de entrada
+#include <stdlib.h>
+#include <time.h>
+
 int main() {
-int carta1 = 1, carta2 = 2; //colocando numeração nas cartas
-int populacao1 = 236641, populacao2 = 1139047; // quantidade de habitantes na cidade
-int turistico1 = 7, turistico2 = 15;
-float area1 = 62.42, area2 = 795.7;
-float  pib1 = 15e9f, pib2 = 72.9e9f;  // 15 bilhões (15 × 10⁹) 72,9 bilhões (72,9 × 10⁹)
-char estado1 = 'A', estado2 = 'B';
-char codigocarta1[10] = "A01", codigocarta2[10] = "A02";
-char nomecidade1[15] = "Hortolandia", nomecidade2[15] = "Campinas";
-float densidade1 = populacao1/area1, densidade2 = populacao2/area2;
-float percapita1 = pib1/populacao1, percapita2 = pib2/populacao2;
+    // Dados das cartas
+    char pais1[] = "Brasil";
+    char pais2[] = "Argentina";
+    unsigned long int populacao1 = 203000000, populacao2 = 46000000;
+    float pib1 = 2.1e12f, pib2 = 0.64e12f; // PIB em dólares
+    int area1 = 8515767, area2 = 2780400;    // km²
+    float densidade1 = (float)populacao1 / area1;
+    float densidade2 = (float)populacao2 / area2;
 
-//Exemplo de exibição
- printf("\n--- DADOS DA CIDADE 1 ---\n");
-    printf("Carta: %d\n", carta1);
-    printf("Código da Carta: %s\n", codigocarta1);
-    printf("Nome da Cidade: %s\n", nomecidade1);
-    printf("Estado: %c\n", estado1);
-    printf("População: %d habitantes\n", populacao1);
-    printf("Área: %.2f km²\n", area1);
-    printf("PIB: R$ %.2f bilhões\n", pib1 / 1e9); // Convertendo para bilhões
-    printf("Pontos Turísticos: %d\n", turistico1);
-    printf("Densidade Populacional: %.2f hab/km²\n", densidade1);
-    printf("Pib per capital: %.2f reais\n", percapita1);
+    srand(time(0)); // Inicializa o gerador de números aleatórios
 
-    // Exibindo os dados da CIDADE 2
-    printf("\n--- DADOS DA CIDADE 2 ---\n");
-    printf("Carta: %d\n", carta2);
-    printf("Código da Carta: %s\n", codigocarta2);
-    printf("Nome da Cidade: %s\n", nomecidade2);
-    printf("Estado: %c\n", estado2);
-    printf("População: %d habitantes\n", populacao2);
-    printf("Área: %.2f km²\n", area2);
-    printf("PIB: R$ %.2f bilhões\n", pib2 / 1e9); // Convertendo para bilhões
-    printf("Pontos Turísticos: %d\n", turistico2);
-    printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
-    printf("Pib per capital: %.2f reais\n", percapita2);
+    // Mostra as cartas disponíveis
+    printf("Super Trunfo - Países\n");
+    printf("Carta 1: %s\n População: %lu\n PIB: %.2f\n Área: %d\n Densidade: %.2f\n", 
+           pais1, populacao1, pib1, area1, densidade1);
+    printf("Carta 2: %s\n População: %lu\n PIB: %.2f\n Área: %d\n Densidade: %.2f\n", 
+           pais2, populacao2, pib2, area2, densidade2);
+
+    // Escolha do jogador (Carta 1 ou 2)
+    int escolha_jogador;
+    printf("\nEscolha sua carta (1 para %s, 2 para %s): ", pais1, pais2);
+    scanf("%d", &escolha_jogador);
+
+    // Define qual carta é do jogador e qual é do computador
+    int carta_jogador = escolha_jogador;
+    int carta_computador;
+
+    if (escolha_jogador == 1) {
+        carta_computador = 2;
+    } else if (escolha_jogador == 2) {
+        carta_computador = 1;
+    }
+
+    // Turno do Jogador (escolhe um atributo)
+    printf("\n--- Seu Turno ---\n");
+    printf("Escolha um atributo para comparar:\n");
+    printf("1 - População\n");
+    printf("2 - PIB\n");
+    printf("3 - Área\n");
+    printf("4 - Densidade Demográfica\n");
+    int atributo_jogador;
+    scanf("%d", &atributo_jogador);
+
+    // Turno do Computador (escolhe aleatoriamente)
+    printf("\n--- Turno do Computador ---\n");
+    int atributo_computador = rand() % 4 + 1; // 1 a 4
+
+    // Comparação dos atributos
+    float valor_jogador, valor_computador;
+
+    // Obtém os valores do atributo escolhido pelo jogador
+    if (carta_jogador == 1) {
+        switch (atributo_jogador) {
+            case 1: valor_jogador = populacao1; break;
+            case 2: valor_jogador = pib1; break;
+            case 3: valor_jogador = area1; break;
+            case 4: valor_jogador = densidade1; break;
+        }
+    } else {
+        switch (atributo_jogador) {
+            case 1: valor_jogador = populacao2; break;
+            case 2: valor_jogador = pib2; break;
+            case 3: valor_jogador = area2; break;
+            case 4: valor_jogador = densidade2; break;
+        }
+    }
+
+    // Obtém os valores do atributo escolhido pelo computador
+    if (carta_computador == 1) {
+        switch (atributo_computador) {
+            case 1: valor_computador = populacao1; break;
+            case 2: valor_computador = pib1; break;
+            case 3: valor_computador = area1; break;
+            case 4: valor_computador = densidade1; break;
+        }
+    } else {
+        switch (atributo_computador) {
+            case 1: valor_computador = populacao2; break;
+            case 2: valor_computador = pib2; break;
+            case 3: valor_computador = area2; break;
+            case 4: valor_computador = densidade2; break;
+        }
+    }
+
+    // Mostra as escolhas
+    printf("\nVocê escolheu o atributo %d (Valor: %.2f)\n", atributo_jogador, valor_jogador);
+    printf("O computador escolheu o atributo %d (Valor: %.2f)\n", atributo_computador, valor_computador);
+
+    // Verifica quem venceu
+    if (atributo_jogador == 4 || atributo_computador == 4) {
+        // Caso especial: Densidade (menor valor vence)
+        if (valor_jogador < valor_computador) {
+            printf("\nVocê venceu esta rodada!\n");
+        } else if (valor_jogador > valor_computador) {
+            printf("\nO computador venceu esta rodada!\n");
+        } else {
+            printf("\nEmpate!\n");
+        }
+    } else {
+        // Para outros atributos, maior valor vence
+        if (valor_jogador > valor_computador) {
+            printf("\nVocê venceu esta rodada!\n");
+        } else if (valor_jogador < valor_computador) {
+            printf("\nO computador venceu esta rodada!\n");
+        } else {
+            printf("\nEmpate!\n");
+        }
+    }
+
     return 0;
 }
